@@ -1,0 +1,25 @@
+group = 'com.personalgpt.chat.api'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+bootJar {
+    archiveName "personalgpt-chat-api" + ".jar"
+    launchScript()
+}
+dependencies {
+    implementation project(':personalgpt-core')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+test {
+    useJUnitPlatform()
+}

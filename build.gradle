@@ -1,0 +1,68 @@
+//plugins {
+//	id 'java'
+//	id 'org.springframework.boot' version '3.1.0'
+//	id 'io.spring.dependency-management' version '1.1.0'
+//}
+//
+//group = 'com.example'
+//version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '17'
+//
+//repositories {
+//	mavenCentral()
+//}
+//
+//dependencies {
+//	implementation 'org.springframework.boot:spring-boot-starter'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//}
+//
+//tasks.named('test') {
+//	useJUnitPlatform()
+//}
+buildscript {
+	ext {
+		springBootVersion = '2.7.2'
+		dependencyManagementVersion = '1.0.12.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		dependencies {
+			classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+			classpath "io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}"
+		}
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'java-library'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	sourceCompatibility = 17
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+	}
+}
+
+project(':personalgpt-auth-api') {
+
+	dependencies {
+		api project(':personalgpt-core')
+	}
+}
+project(':personalgpt-chat-api') {
+
+	dependencies {
+		api project(':personalgpt-core')
+	}
+}

@@ -1,0 +1,5 @@
+rootProject.name = 'personalgpt-backend'
+include 'personalgpt-core'
+include 'personalgpt-auth-api'
+include 'personalgpt-chat-api'
+
